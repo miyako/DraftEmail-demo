@@ -34,7 +34,7 @@ The LSP gate cannot be "zero diagnostics": a consumer project that depends on a 
 always reports `cs.DraftEmail is unknown` plus cascading `does not exist on type` warnings. Read the
 diagnostics and fix everything else; leave those.
 
-Behaviour gate:
+Behaviour gate (`scripts/smoke.sh` wraps this search for `tool4d` and prints the verdict):
 
 ```sh
 tool4d --project Project/DraftEmail-demo.4DProject --dataless --skip-onstartup \

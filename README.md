@@ -58,6 +58,10 @@ The demo can prove itself without a window or a mail client. `Demo_HeadlessSmoke
 scenarios and writes a JSON report:
 
 ```sh
+scripts/smoke.sh                       # finds tool4d, runs the smoke, prints the verdict
+```
+
+```sh
 tool4d --project Project/DraftEmail-demo.4DProject --dataless --skip-onstartup \
   --startup-method Demo_HeadlessSmoke --user-param '{"out":"/tmp/DraftEmail-demo-smoke.json"}'
 ```
@@ -68,6 +72,7 @@ tool4d --project Project/DraftEmail-demo.4DProject --dataless --skip-onstartup \
   "summary": "13 of 13 expectations matched",
   "studio": {
     "validate": {"ok": true, "value": {"protocol": 1, "status": "validated"}},
+    "seed": {"to": "dana@example.com", "subject": "Quarterly review", "bodyLength": 16, "matches": true},
     "badge": "ns-sharing-service · cli 0.1.4 · macOS-universal"
   }
 }
