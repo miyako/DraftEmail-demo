@@ -53,6 +53,8 @@ update the catalogue note so it stays true.
   regenerate; do not hand-edit the JSON.
 * Form methods dispatch on `FORM Event.objectName`. A new control needs an entry in the generator, a
   branch in the method, and — if it shows state — a line in `DraftScene.refresh`.
+* **A form method takes no parameters.** `DIALOG`'s second argument becomes `Form`, so a handoff is
+  `Form.seed`, never `$params.seed` — `#DECLARE($params : Object)` there compiles and stays `Null`.
 * Class methods take `$form`/`$fields` explicitly instead of reading `Form`, so the flow keeps working
   in `Demo_HeadlessSmoke`. Keep that property; it is what makes the demo verifiable.
 * UI writes stay inside `DraftScene.refresh` and its helpers, and those helpers return early when

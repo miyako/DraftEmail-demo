@@ -19,6 +19,9 @@ var $lab : cs.DraftLab
 var $fields : Object
 var $results : Collection
 var $row : Object
+var $seedScenario : Object
+var $seeded : Object
+var $seedOk : Boolean
 var $file : 4D.File
 var $failures : Integer
 
@@ -34,6 +37,7 @@ If (Get database parameter(User param value; $text)=0)
 End if
 
 $report:=New object("compiled"; Is compiled mode)
+$lab:=cs.DraftLab.new()
 
 // Studio path: defaults, one validate, one deliberate rejection.
 $scene:=cs.DraftScene.new()
@@ -47,8 +51,20 @@ $report.studio.request:=$scene.buildRequest($fields; False)
 $report.studio.badge:=$fields.badgeText
 $report.studio.capabilities:=$scene.caps
 
+// The Contract Lab's "To Studio" path: a catalogue request must land in the
+// studio's fields. This checks the prefill itself; the form-method wiring that
+// delivers Form.seed cannot run without a window.
+$seeded:=New object
+$seedOk:=False
+For each ($seedScenario; $lab.scenarios)
+	If ($seedScenario.id="minimal")
+		$scene.seed($seeded; $seedScenario.request)
+		$seedOk:=(($seeded.inTo=$seedScenario.request.to[0]) & ($seeded.inSubject=$seedScenario.request.subject))
+	End if
+End for each
+$report.studio.seed:=New object("to"; $seeded.inTo; "subject"; $seeded.inSubject; "bodyLength"; Length($seeded.inBody); "matches"; $seedOk)
+
 // Lab path: every scenario, compared against its declared expectation.
-$lab:=cs.DraftLab.new()
 $results:=$lab.runAll()
 $report.scenarios:=New collection
 $failures:=0
@@ -60,7 +76,7 @@ For each ($row; $results)
 End for each
 $report.summary:=$lab.summary($results)
 $report.failureCount:=$failures
-$report.passed:=($report.studio.validate.ok & ($failures=0))
+$report.passed:=($report.studio.validate.ok & $seedOk & ($failures=0))
 
 $file:=File($config.out)
 $file.parent.create()

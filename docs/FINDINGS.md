@@ -188,6 +188,17 @@ Recorded because each one cost a run:
 | `A ":=" was expected` with no line number | A statement was written `$obj.prop:$value` | `:=` |
 | A returned object silently missing keys | Empty and Null-valued keys are dropped from `New object(...)`, so a `Null` chip title disappeared from the report | Read the key with `Value type` before trusting presence |
 | A parameter and a return variable with the same name | `Function seed($form …)->$form` | Distinct name for the return variable |
+| A `$params.seed` handoff that silently did nothing | A form method declared `#DECLARE($params : Object)` | Read `Form.seed`: `DIALOG`'s data becomes `Form`, and a form method is never called with a parameter |
+
+The `$params` case deserves its own sentence, because it is the one here that
+compiled, ran, and failed silently. `Demo_OpenStudio` passes the chosen lab
+scenario to the form as `DIALOG("DraftStudio"; New object("seed"; …); *)`, which
+makes it `Form.seed`; copying the start method's `#DECLARE($params : Object)`
+into the form method instead leaves `$params` `Null` on every event, so the
+editor never prefilled and no error was raised anywhere. Headless coverage of
+`seed` itself would not have caught it — the wiring only exists with a window —
+so the guard is the rule in [`AGENTS.md`](../AGENTS.md): form methods read
+`Form`, never parameters.
 
 ## 11. What the component gets right
 

@@ -111,7 +111,8 @@ tools/                       4dform, 4dlsp and 4dlanguage binaries from the miya
 
 Forms are generated data, not hand-edited XML: `python3 scripts/make_forms.py` rewrites both
 `form.4DForm` files and reports overlapping objects. Behaviour lives in the `*Scene`/`*Lab`
-classes and in each form method, which dispatches on `FORM Event.objectName`.
+classes and in each form method, which dispatches on `FORM Event.objectName` and reads its data from
+`Form` (a form method takes no parameters).
 
 ## Documentation
 
