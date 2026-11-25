@@ -1,0 +1,533 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 1180,
+	"windowMinHeight": 768,
+	"windowMaxWidth": 1180,
+	"windowMaxHeight": 768,
+	"width": 1180,
+	"height": 768,
+	"events": [
+		"onLoad",
+		"onTimer",
+		"onUnload"
+	],
+	"windowTitle": "DraftEmail — Draft Studio",
+	"destination": "detailScreen",
+	"method": "method.4dm",
+	"pages": [
+		{
+			"objects": {
+				"canvas": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 1180,
+					"height": 768,
+					"fill": "automatic",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"title": {
+					"type": "text",
+					"left": 24,
+					"top": 16,
+					"width": 340,
+					"height": 34,
+					"text": "DraftEmail",
+					"class": "appTitle"
+				},
+				"subtitle": {
+					"type": "text",
+					"left": 24,
+					"top": 54,
+					"width": 680,
+					"height": 20,
+					"text": "Compose a plain-text draft, then hand it to Apple Mail — the component never sends",
+					"class": "appSubtitle"
+				},
+				"badge": {
+					"type": "text",
+					"left": 740,
+					"top": 24,
+					"width": 416,
+					"height": 22,
+					"text": "resolving…",
+					"class": "badge",
+					"textAlign": "right"
+				},
+				"rule": {
+					"type": "rectangle",
+					"left": 24,
+					"top": 86,
+					"width": 1132,
+					"height": 1,
+					"stroke": "transparent",
+					"class": "rule"
+				},
+				"s1": {
+					"type": "text",
+					"left": 24,
+					"top": 100,
+					"width": 380,
+					"height": 18,
+					"text": "1 · THE REQUEST",
+					"class": "section"
+				},
+				"lblTo": {
+					"type": "text",
+					"left": 24,
+					"top": 126,
+					"width": 72,
+					"height": 20,
+					"text": "To",
+					"class": "label"
+				},
+				"inTo": {
+					"type": "input",
+					"left": 100,
+					"top": 124,
+					"width": 304,
+					"height": 26,
+					"dataSource": "Form.inTo",
+					"dataSourceTypeHint": "text",
+					"class": "field"
+				},
+				"lblCc": {
+					"type": "text",
+					"left": 24,
+					"top": 158,
+					"width": 72,
+					"height": 20,
+					"text": "Cc",
+					"class": "label"
+				},
+				"inCc": {
+					"type": "input",
+					"left": 100,
+					"top": 156,
+					"width": 304,
+					"height": 26,
+					"dataSource": "Form.inCc",
+					"dataSourceTypeHint": "text",
+					"class": "field"
+				},
+				"lblBcc": {
+					"type": "text",
+					"left": 24,
+					"top": 190,
+					"width": 72,
+					"height": 20,
+					"text": "Bcc",
+					"class": "label"
+				},
+				"inBcc": {
+					"type": "input",
+					"left": 100,
+					"top": 188,
+					"width": 304,
+					"height": 26,
+					"dataSource": "Form.inBcc",
+					"dataSourceTypeHint": "text",
+					"class": "field"
+				},
+				"hintCcbcc": {
+					"type": "text",
+					"left": 24,
+					"top": 218,
+					"width": 380,
+					"height": 18,
+					"text": "cc/bcc are unsupported by Apple Mail's sharing service",
+					"class": "hint"
+				},
+				"lblSubject": {
+					"type": "text",
+					"left": 24,
+					"top": 246,
+					"width": 72,
+					"height": 20,
+					"text": "Subject",
+					"class": "label"
+				},
+				"inSubject": {
+					"type": "input",
+					"left": 100,
+					"top": 244,
+					"width": 304,
+					"height": 26,
+					"dataSource": "Form.inSubject",
+					"dataSourceTypeHint": "text",
+					"class": "field"
+				},
+				"lblBody": {
+					"type": "text",
+					"left": 24,
+					"top": 280,
+					"width": 72,
+					"height": 20,
+					"text": "Body",
+					"class": "label"
+				},
+				"inBody": {
+					"type": "input",
+					"left": 24,
+					"top": 302,
+					"width": 380,
+					"height": 116,
+					"dataSource": "Form.inBody",
+					"class": "field",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"s2": {
+					"type": "text",
+					"left": 24,
+					"top": 434,
+					"width": 260,
+					"height": 18,
+					"text": "ATTACHMENTS",
+					"class": "section"
+				},
+				"attachCount": {
+					"type": "text",
+					"left": 284,
+					"top": 434,
+					"width": 120,
+					"height": 18,
+					"text": "0 files",
+					"class": "hint",
+					"textAlign": "right"
+				},
+				"attachmentList": {
+					"type": "listbox",
+					"left": 24,
+					"top": 456,
+					"width": 380,
+					"height": 90,
+					"dataSource": "Form.attachmentRows",
+					"currentItemSource": "Form.selectedAttachment",
+					"selectionMode": "single",
+					"resizingMode": "legacy",
+					"rowHeight": "26px",
+					"headerHeight": "24px",
+					"borderStyle": "solid",
+					"class": "list",
+					"scrollbarVertical": "automatic",
+					"alternateFill": "automaticAlternate",
+					"events": [
+						"onClick"
+					],
+					"columns": [
+						{
+							"name": "File",
+							"dataSource": "This.name",
+							"width": 280,
+							"truncateMode": "none",
+							"textAlign": "left",
+							"verticalAlign": "middle"
+						},
+						{
+							"name": "Size",
+							"dataSource": "This.sizeLabel",
+							"width": 80,
+							"truncateMode": "none",
+							"textAlign": "right",
+							"verticalAlign": "middle"
+						}
+					]
+				},
+				"btnAdd": {
+					"type": "button",
+					"left": 24,
+					"top": 554,
+					"width": 110,
+					"height": 28,
+					"text": "Add file…",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnRemove": {
+					"type": "button",
+					"left": 142,
+					"top": 554,
+					"width": 110,
+					"height": 28,
+					"text": "Remove",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"hintAttach": {
+					"type": "text",
+					"left": 24,
+					"top": 590,
+					"width": 380,
+					"height": 18,
+					"text": "Originals are never moved, changed or deleted",
+					"class": "hint"
+				},
+				"btnValidate": {
+					"type": "button",
+					"left": 24,
+					"top": 620,
+					"width": 178,
+					"height": 34,
+					"text": "Validate (no UI)",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnCompose": {
+					"type": "button",
+					"left": 210,
+					"top": 620,
+					"width": 194,
+					"height": 34,
+					"text": "Open draft in Mail",
+					"style": "roundedBevel",
+					"class": "primary",
+					"events": [
+						"onClick"
+					]
+				},
+				"noteA": {
+					"type": "text",
+					"left": 24,
+					"top": 664,
+					"width": 380,
+					"height": 16,
+					"text": "Compose runs in a worker, so the mail dialog cannot",
+					"class": "hint"
+				},
+				"noteB": {
+					"type": "text",
+					"left": 24,
+					"top": 682,
+					"width": 380,
+					"height": 16,
+					"text": "freeze this form. Only a person can press Send.",
+					"class": "hint"
+				},
+				"toast": {
+					"type": "text",
+					"left": 24,
+					"top": 712,
+					"width": 380,
+					"height": 18,
+					"text": "",
+					"class": "toast"
+				},
+				"s3": {
+					"type": "text",
+					"left": 428,
+					"top": 100,
+					"width": 728,
+					"height": 18,
+					"text": "2 · CAPABILITIES — A SUPPORTED CONTRACT, NOT A PERMISSION GRANT",
+					"class": "section"
+				},
+				"capTo": {
+					"type": "text",
+					"left": 428,
+					"top": 124,
+					"width": 112,
+					"height": 24,
+					"text": "to",
+					"class": "chip",
+					"textAlign": "center"
+				},
+				"capCc": {
+					"type": "text",
+					"left": 548,
+					"top": 124,
+					"width": 112,
+					"height": 24,
+					"text": "cc",
+					"class": "chip",
+					"textAlign": "center"
+				},
+				"capBcc": {
+					"type": "text",
+					"left": 668,
+					"top": 124,
+					"width": 112,
+					"height": 24,
+					"text": "bcc",
+					"class": "chip",
+					"textAlign": "center"
+				},
+				"capSubject": {
+					"type": "text",
+					"left": 788,
+					"top": 124,
+					"width": 112,
+					"height": 24,
+					"text": "subject",
+					"class": "chip",
+					"textAlign": "center"
+				},
+				"capBody": {
+					"type": "text",
+					"left": 908,
+					"top": 124,
+					"width": 112,
+					"height": 24,
+					"text": "body",
+					"class": "chip",
+					"textAlign": "center"
+				},
+				"capAttach": {
+					"type": "text",
+					"left": 1028,
+					"top": 124,
+					"width": 128,
+					"height": 24,
+					"text": "attachments",
+					"class": "chip",
+					"textAlign": "center"
+				},
+				"capNote": {
+					"type": "text",
+					"left": 428,
+					"top": 156,
+					"width": 728,
+					"height": 18,
+					"text": "",
+					"class": "hint"
+				},
+				"s4": {
+					"type": "text",
+					"left": 428,
+					"top": 186,
+					"width": 728,
+					"height": 18,
+					"text": "3 · LIVE JOB",
+					"class": "section"
+				},
+				"jobStateText": {
+					"type": "text",
+					"left": 428,
+					"top": 208,
+					"width": 132,
+					"height": 24,
+					"text": "idle",
+					"class": "verdict"
+				},
+				"jobDetailText": {
+					"type": "text",
+					"left": 568,
+					"top": 210,
+					"width": 588,
+					"height": 20,
+					"text": "",
+					"class": "hint"
+				},
+				"s5": {
+					"type": "text",
+					"left": 428,
+					"top": 242,
+					"width": 600,
+					"height": 18,
+					"text": "4 · RETAINED ATTACHMENT COPIES (STAGING)",
+					"class": "section"
+				},
+				"stagingText": {
+					"type": "text",
+					"left": 428,
+					"top": 264,
+					"width": 596,
+					"height": 20,
+					"text": "no batch",
+					"class": "hint"
+				},
+				"btnCleanup": {
+					"type": "button",
+					"left": 1034,
+					"top": 262,
+					"width": 122,
+					"height": 26,
+					"text": "Clean up",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"s6": {
+					"type": "text",
+					"left": 428,
+					"top": 296,
+					"width": 728,
+					"height": 18,
+					"text": "5 · LAST ENVELOPE",
+					"class": "section"
+				},
+				"envelopeView": {
+					"type": "input",
+					"left": 428,
+					"top": 318,
+					"width": 728,
+					"height": 176,
+					"dataSource": "Form.envelopeText",
+					"class": "console",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				},
+				"s7": {
+					"type": "text",
+					"left": 428,
+					"top": 506,
+					"width": 728,
+					"height": 18,
+					"text": "6 · TIMELINE",
+					"class": "section"
+				},
+				"timelineView": {
+					"type": "input",
+					"left": 428,
+					"top": 528,
+					"width": 728,
+					"height": 176,
+					"dataSource": "Form.timelineText",
+					"class": "console",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				}
+			}
+		}
+	]
+}

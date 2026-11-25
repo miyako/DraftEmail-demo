@@ -1,0 +1,366 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 1080,
+	"windowMinHeight": 760,
+	"windowMaxWidth": 1080,
+	"windowMaxHeight": 760,
+	"width": 1080,
+	"height": 760,
+	"events": [
+		"onLoad",
+		"onUnload"
+	],
+	"windowTitle": "DraftEmail — Contract Lab",
+	"destination": "detailScreen",
+	"method": "method.4dm",
+	"pages": [
+		{
+			"objects": {
+				"canvas": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 1080,
+					"height": 760,
+					"fill": "automatic",
+					"stroke": "transparent"
+				}
+			}
+		},
+		{
+			"objects": {
+				"title": {
+					"type": "text",
+					"left": 24,
+					"top": 16,
+					"width": 340,
+					"height": 34,
+					"text": "Contract Lab",
+					"class": "appTitle"
+				},
+				"subtitle": {
+					"type": "text",
+					"left": 24,
+					"top": 54,
+					"width": 700,
+					"height": 20,
+					"text": "The refusals are the feature: every field is validated before anything is handed to Mail",
+					"class": "appSubtitle"
+				},
+				"badge": {
+					"type": "text",
+					"left": 760,
+					"top": 24,
+					"width": 296,
+					"height": 22,
+					"text": "",
+					"class": "badge",
+					"textAlign": "right"
+				},
+				"rule": {
+					"type": "rectangle",
+					"left": 24,
+					"top": 86,
+					"width": 1032,
+					"height": 1,
+					"stroke": "transparent",
+					"class": "rule"
+				},
+				"s1": {
+					"type": "text",
+					"left": 24,
+					"top": 100,
+					"width": 360,
+					"height": 18,
+					"text": "SCENARIOS",
+					"class": "section"
+				},
+				"scenarioList": {
+					"type": "listbox",
+					"left": 24,
+					"top": 124,
+					"width": 360,
+					"height": 286,
+					"dataSource": "Form.scenarioRows",
+					"currentItemSource": "Form.selectedScenario",
+					"selectionMode": "single",
+					"resizingMode": "legacy",
+					"rowHeight": "26px",
+					"headerHeight": "24px",
+					"borderStyle": "solid",
+					"class": "list",
+					"scrollbarVertical": "automatic",
+					"alternateFill": "automaticAlternate",
+					"events": [
+						"onClick"
+					],
+					"columns": [
+						{
+							"name": "Scenario",
+							"dataSource": "This.name",
+							"width": 240,
+							"truncateMode": "none",
+							"textAlign": "left",
+							"verticalAlign": "middle"
+						},
+						{
+							"name": "Layer",
+							"dataSource": "This.layer",
+							"width": 96,
+							"truncateMode": "none",
+							"textAlign": "left",
+							"verticalAlign": "middle"
+						}
+					]
+				},
+				"btnRun": {
+					"type": "button",
+					"left": 24,
+					"top": 420,
+					"width": 112,
+					"height": 30,
+					"text": "Run",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnRunAll": {
+					"type": "button",
+					"left": 144,
+					"top": 420,
+					"width": 112,
+					"height": 30,
+					"text": "Run all",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"btnToStudio": {
+					"type": "button",
+					"left": 264,
+					"top": 420,
+					"width": 120,
+					"height": 30,
+					"text": "To Studio",
+					"style": "roundedBevel",
+					"class": "secondary",
+					"events": [
+						"onClick"
+					]
+				},
+				"verdictBig": {
+					"type": "text",
+					"left": 24,
+					"top": 460,
+					"width": 360,
+					"height": 30,
+					"text": "—",
+					"class": "verdictBig"
+				},
+				"verdictDetail": {
+					"type": "input",
+					"left": 24,
+					"top": 494,
+					"width": 360,
+					"height": 34,
+					"dataSource": "Form.verdictDetail",
+					"class": "hint",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				},
+				"s2": {
+					"type": "text",
+					"left": 24,
+					"top": 538,
+					"width": 360,
+					"height": 18,
+					"text": "REQUEST JSON",
+					"class": "section"
+				},
+				"requestView": {
+					"type": "input",
+					"left": 24,
+					"top": 560,
+					"width": 360,
+					"height": 160,
+					"dataSource": "Form.requestText",
+					"class": "console",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				},
+				"s3": {
+					"type": "text",
+					"left": 428,
+					"top": 100,
+					"width": 628,
+					"height": 18,
+					"text": "EXPECTATION",
+					"class": "section"
+				},
+				"expectView": {
+					"type": "input",
+					"left": 428,
+					"top": 122,
+					"width": 628,
+					"height": 64,
+					"dataSource": "Form.expectText",
+					"class": "hint",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				},
+				"s4": {
+					"type": "text",
+					"left": 428,
+					"top": 194,
+					"width": 628,
+					"height": 18,
+					"text": "ACTUAL ENVELOPE",
+					"class": "section"
+				},
+				"actualView": {
+					"type": "input",
+					"left": 428,
+					"top": 216,
+					"width": 628,
+					"height": 150,
+					"dataSource": "Form.actualText",
+					"class": "console",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				},
+				"s5": {
+					"type": "text",
+					"left": 428,
+					"top": 374,
+					"width": 628,
+					"height": 18,
+					"text": "RUN",
+					"class": "section"
+				},
+				"resultList": {
+					"type": "listbox",
+					"left": 428,
+					"top": 396,
+					"width": 628,
+					"height": 190,
+					"dataSource": "Form.resultRows",
+					"currentItemSource": "Form.selectedResult",
+					"selectionMode": "single",
+					"resizingMode": "legacy",
+					"rowHeight": "26px",
+					"headerHeight": "24px",
+					"borderStyle": "solid",
+					"class": "list",
+					"scrollbarVertical": "automatic",
+					"alternateFill": "automaticAlternate",
+					"events": [
+						"onClick"
+					],
+					"columns": [
+						{
+							"name": "Scenario",
+							"dataSource": "This.name",
+							"width": 236,
+							"truncateMode": "none",
+							"textAlign": "left",
+							"verticalAlign": "middle"
+						},
+						{
+							"name": "Expected",
+							"dataSource": "This.expect",
+							"width": 130,
+							"truncateMode": "none",
+							"textAlign": "left",
+							"verticalAlign": "middle"
+						},
+						{
+							"name": "Actual",
+							"dataSource": "This.actual",
+							"width": 150,
+							"truncateMode": "none",
+							"textAlign": "left",
+							"verticalAlign": "middle"
+						},
+						{
+							"name": "Verdict",
+							"dataSource": "This.verdict",
+							"width": 94,
+							"truncateMode": "none",
+							"textAlign": "center",
+							"verticalAlign": "middle"
+						}
+					]
+				},
+				"s6": {
+					"type": "text",
+					"left": 428,
+					"top": 594,
+					"width": 628,
+					"height": 18,
+					"text": "NOTES",
+					"class": "section"
+				},
+				"labLog": {
+					"type": "input",
+					"left": 428,
+					"top": 616,
+					"width": 628,
+					"height": 104,
+					"dataSource": "Form.labLogText",
+					"class": "console",
+					"multiline": "yes",
+					"wordwrap": "normal",
+					"scrollbarVertical": "automatic",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false,
+					"focusable": true,
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				}
+			}
+		}
+	]
+}

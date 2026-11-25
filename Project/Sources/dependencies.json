@@ -1,0 +1,9 @@
+{
+	"version": 2102,
+	"dependencies": {
+		"DraftEmail": {
+			"github": "miyako/DraftEmail",
+			"tag": "0.1.4"
+		}
+	}
+}

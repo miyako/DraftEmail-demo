@@ -1,0 +1,103 @@
+/* DraftEmail demo -- light and dark. Only visual properties live here; anything
+   structural (multiline, enterable, listbox geometry) stays in the .4DForm. */
+
+.appTitle {
+	stroke: #1D1D1F;
+	fontSize: 26px;
+	fontWeight: bold;
+}
+.appSubtitle {
+	stroke: #6E6E73;
+	fontSize: 13px;
+}
+.badge {
+	stroke: #6E6E73;
+	fontSize: 12px;
+	fontStyle: italic;
+}
+.section {
+	stroke: #8A8A8E;
+	fontSize: 10px;
+	fontWeight: bold;
+}
+.label {
+	stroke: #3A3A3C;
+	fontSize: 13px;
+	fontWeight: bold;
+}
+.hint {
+	stroke: #8A8A8E;
+	fontSize: 11px;
+}
+.toast {
+	stroke: #0A84FF;
+	fontSize: 12px;
+	fontStyle: italic;
+}
+.rule {
+	fill: #D1D1D6;
+}
+.field {
+	stroke: #1D1D1F;
+	fill: #FFFFFF;
+	fontSize: 13px;
+	borderRadius: 6;
+}
+.console {
+	stroke: #3A3A3C;
+	fill: #F5F5F7;
+	fontSize: 11px;
+}
+.list {
+	stroke: #1D1D1F;
+	alternateFill: #F5F5F7;
+	fontSize: 12px;
+}
+.verdict {
+	stroke: #1D1D1F;
+	fontSize: 13px;
+	fontWeight: bold;
+}
+.verdictBig {
+	stroke: #1D1D1F;
+	fontSize: 19px;
+	fontWeight: bold;
+}
+.chip {
+	stroke: #3A3A3C;
+	fill: #EFEFF4;
+	fontSize: 11px;
+	borderRadius: 6;
+}
+.primary {
+	textAlign: center;
+	fontSize: 13px;
+	fontWeight: bold;
+	fill: #0A84FF;
+	stroke: #FFFFFF;
+	borderRadius: 8;
+}
+.secondary {
+	textAlign: center;
+	fontSize: 13px;
+	fill: #E8E8ED;
+	stroke: #1D1D1F;
+	borderRadius: 8;
+}
+
+@media (prefers-color-scheme: dark) {
+	.appTitle { stroke: #F5F5F7; }
+	.appSubtitle { stroke: #AEAEB2; }
+	.badge { stroke: #AEAEB2; }
+	.section { stroke: #8E8E93; }
+	.label { stroke: #E5E5EA; }
+	.hint { stroke: #98989D; }
+	.rule { fill: #3A3A3C; }
+	.field { stroke: #F5F5F7; fill: #2C2C2E; }
+	.console { stroke: #E5E5EA; fill: #1C1C1E; }
+	.list { stroke: #F5F5F7; alternateFill: #2C2C2E; }
+	.verdict { stroke: #F5F5F7; }
+	.verdictBig { stroke: #F5F5F7; }
+	.chip { stroke: #E5E5EA; fill: #2C2C2E; }
+	.secondary { fill: #3A3A3C; stroke: #F5F5F7; }
+}
