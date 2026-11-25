@@ -3,7 +3,9 @@
 // The form method routes by object name; the behaviour lives in cs.DraftScene.
 // On Timer exists only so a compose job dispatched to a worker can be polled
 // without blocking this form's process.
-#DECLARE($params : Object)
+//
+// A form method receives no parameters: the object given to DIALOG becomes
+// Form, so a seed passed by Demo_OpenStudio arrives as Form.seed.
 
 var $scene : Object
 var $clicked : Text
@@ -14,8 +16,8 @@ Case of
 		$scene:=cs.DraftScene.new()
 		Form.scene:=$scene
 		$scene.bind(Form)
-		If (Value type($params.seed)=Is object)
-			$scene.seed(Form; $params.seed)
+		If (Value type(Form.seed)=Is object)
+			$scene.seed(Form; Form.seed)
 			$scene.refresh(Form)
 		End if
 

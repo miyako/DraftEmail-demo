@@ -1,8 +1,7 @@
 // ContractLab -- form method.
 //
 // Routes clicks to cs.DraftLab. Every scenario is a real call into the
-// component; none of them composes mail.
-#DECLARE($params : Object)
+// component; none of them composes mail. A form method takes no parameters.
 
 var $lab : Object
 var $clicked : Text
