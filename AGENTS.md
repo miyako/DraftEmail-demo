@@ -14,7 +14,7 @@ below rather than merely listing them.
 * Keep the component pin in `dependencies.json` an exact tag (`0.1.4`), not a branch.
 * `tool4d` cannot resolve that dependency from GitHub. Prime
   `~/Library/Caches/tool4d/Dependencies/.github/miyako/DraftEmail/<tag>/` from the IDE cache (folder
-  **and** `<tag>.json`) before headless runs — see
+  **and** `<tag>.json`), or put the component in `Project/Components/`, before headless runs — see
   [`docs/FINDINGS.md`](docs/FINDINGS.md#1-tool4d-cannot-resolve-a-dependency-manager-dependency).
 
 ## Done gate

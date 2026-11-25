@@ -28,7 +28,9 @@ cp    ~/Library/Caches/4D/Dependencies/.github/miyako/DraftEmail/0.1.4.json \
       ~/Library/Caches/tool4d/Dependencies/.github/miyako/DraftEmail/0.1.4.json
 ```
 
-Do that after opening the project once in the IDE. The metadata file is what makes the tag resolvable:
+Do that after opening the project once in the IDE. Alternatively drop a copy into `Project/Components/`,
+which outranks `dependencies.json` — but this repository does not commit one, so the cache is what a
+headless checkout relies on. The metadata file is what makes the tag resolvable:
 
 ```json
 {
