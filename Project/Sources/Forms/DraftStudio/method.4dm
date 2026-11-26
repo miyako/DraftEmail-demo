@@ -9,7 +9,7 @@
 
 var $scene : Object
 var $clicked : Text
-var $path : Text
+var $name : Text
 
 Case of
 	: (FORM Event.code=On Load)
@@ -45,9 +45,11 @@ Case of
 					$scene.cleanup(Form)
 				: ($clicked="btnAdd")
 					// A native picker: the demo never guesses an attachment path.
-					$path:=Select document(""; "*"; "Choose a file to attach"; 0)
-					If ($path#"")
-						$scene.addAttachment($path)
+					// Select document returns the file NAME only; the full system
+					// (not POSIX) path is in the DOCUMENT system variable.
+					$name:=Select document(""; "*"; "Choose a file to attach"; 0)
+					If ((OK=1) & ($name#""))
+						$scene.addAttachment(DOCUMENT; True)
 						$scene.refresh(Form)
 					End if
 				: ($clicked="btnRemove")

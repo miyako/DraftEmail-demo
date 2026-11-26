@@ -207,13 +207,19 @@ Function cleanup($fields : Object)->$result : Object
 	End if
 	This.refresh($fields)
 
-Function addAttachment($path : Text)->$file : Object
+// $platform is True for a system path (Select document's DOCUMENT variable),
+// False for the POSIX paths found in a request document.
+Function addAttachment($path : Text; $platform : Boolean)->$file : Object
 	If ($path="")
 		return Null
 	End if
 	var $candidate : 4D.File
 	var $row : Object
-	$candidate:=File($path)
+	If ($platform)
+		$candidate:=File($path; fk platform path)
+	Else
+		$candidate:=File($path)
+	End if
 	If (Not($candidate.exists))
 		This.toast:="Not a readable file: "+$path
 		return Null
