@@ -22,6 +22,10 @@ var $row : Object
 var $seedScenario : Object
 var $seeded : Object
 var $seedOk : Boolean
+var $attachRow : Object
+var $attachFields : Object
+var $attachValidate : Object
+var $attachOk : Boolean
 var $file : 4D.File
 var $failures : Integer
 
@@ -64,6 +68,16 @@ For each ($seedScenario; $lab.scenarios)
 End for each
 $report.studio.seed:=New object("to"; $seeded.inTo; "subject"; $seeded.inSubject; "bodyLength"; Length($seeded.inBody); "matches"; $seedOk)
 
+// The attachment picker hands a system (platform) path; the request must carry
+// an absolute POSIX path, and the component must accept it. Structure file is
+// a plain system path to a regular, non-symlink file.
+$attachFields:=New object
+$scene.bind($attachFields)
+$attachRow:=$scene.addAttachment(Structure file; True)
+$attachValidate:=$scene.validate($attachFields)
+$attachOk:=(($attachRow#Null) && (Position("/"; String($attachRow.path))=1) && ($scene.attachments.length=1) && (Bool($attachValidate.ok)))
+$report.studio.attachment:=New object("path"; ($attachRow#Null) ? $attachRow.path : ""; "rows"; $scene.attachments.length; "validated"; Bool($attachValidate.ok); "matches"; $attachOk)
+
 // Lab path: every scenario, compared against its declared expectation.
 $results:=$lab.runAll()
 $report.scenarios:=New collection
@@ -76,7 +90,7 @@ For each ($row; $results)
 End for each
 $report.summary:=$lab.summary($results)
 $report.failureCount:=$failures
-$report.passed:=($report.studio.validate.ok & $seedOk & ($failures=0))
+$report.passed:=($report.studio.validate.ok & $seedOk & $attachOk & ($failures=0))
 
 $file:=File($config.out)
 $file.parent.create()

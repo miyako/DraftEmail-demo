@@ -225,7 +225,9 @@ Function addAttachment($path : Text; $platform : Boolean)->$file : Object
 		return Null
 	End if
 	$row:=New object
-	$row.path:=$candidate.platformPath
+	// The component and CLI require an absolute POSIX path. platformPath is
+	// an HFS path ("Macintosh HD:Users:...") on macOS and is refused.
+	$row.path:=$candidate.path
 	$row.name:=$candidate.name
 	$row.bytes:=$candidate.size
 	$row.sizeLabel:=This._sizeLabel($candidate.size)
@@ -289,7 +291,8 @@ Function refresh($form : Object)
 	$form.envelopeText:=This.envelopeText()
 	$form.timelineText:=This.timelineText()
 	$form.toast:=This.toast
-	$form.attachmentRows:=This.attachments
+	// A copy, so the list box sees a new collection and repaints after push/remove.
+	$form.attachmentRows:=This.attachments.copy()
 	$form.attachCount:=(This.attachments.length=1) ? "1 file" : String(This.attachments.length)+" files"
 	If (This.caps#Null)
 		If (This.caps.ok)
