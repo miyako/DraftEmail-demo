@@ -216,6 +216,7 @@
 					"top": 456,
 					"width": 380,
 					"height": 90,
+					"listboxType": "collection",
 					"dataSource": "Form.attachmentRows",
 					"currentItemSource": "Form.selectedAttachment",
 					"selectionMode": "single",

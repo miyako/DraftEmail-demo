@@ -59,7 +59,8 @@ def input_(name, left, top, width, height, source, cls=None,
 def listbox(name, left, top, width, height, source, current, columns, cls="list"):
     return {
         "type": "listbox", "left": left, "top": top, "width": width,
-        "height": height, "dataSource": source, "currentItemSource": current,
+        "height": height, "listboxType": "collection",
+        "dataSource": source, "currentItemSource": current,
         "selectionMode": "single", "resizingMode": "legacy",
         "rowHeight": "26px", "headerHeight": "24px",
         "borderStyle": "solid", "class": cls,
