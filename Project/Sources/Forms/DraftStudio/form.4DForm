@@ -13,6 +13,7 @@
 	"height": 768,
 	"events": [
 		"onLoad",
+		"onClick",
 		"onTimer",
 		"onUnload"
 	],

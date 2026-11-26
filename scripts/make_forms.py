@@ -246,9 +246,9 @@ lab = {
 
 FORMS = {
     "DraftStudio": form(W, H, "DraftEmail — Draft Studio",
-                        ["onLoad", "onTimer", "onUnload"], studio),
+                        ["onLoad", "onClick", "onTimer", "onUnload"], studio),
     "ContractLab": form(LW, LH, "DraftEmail — Contract Lab",
-                        ["onLoad", "onUnload"], lab),
+                        ["onLoad", "onClick", "onUnload"], lab),
 }
 
 

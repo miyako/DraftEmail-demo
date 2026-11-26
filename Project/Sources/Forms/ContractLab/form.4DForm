@@ -13,6 +13,7 @@
 	"height": 760,
 	"events": [
 		"onLoad",
+		"onClick",
 		"onUnload"
 	],
 	"windowTitle": "DraftEmail — Contract Lab",
